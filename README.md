@@ -1,4 +1,3 @@
-
 Associate Software Engineer Coding Challenge
 Zendesk Ticket Viewer
 Zendesk is a customer service tool that allows the creation and management of support tickets. Your company needs you to build a Ticket Viewer that will:
@@ -17,10 +16,6 @@ The Ticket Viewer should handle the API being unavailable
 We need to see you write at least a few happy path tests
 Submissions will be accepted up till midnight on Friday 4th May. Any submissions or commits made after this time will be ignored. Submission can be done either:
 
-Via Github, Google Drive or Dropbox - email the link to mwoodard@zendesk.com Ensure the repo is public. This is the preferred method of submission. Meaningful commits will be looked upon favourably.
-Via email - zip up the project and email to mwoodard@zendesk.com 
-Please be aware: Gmail blocks the following file types (so please use the above): 
-.ADE, .ADP, .BAT, .CHM, .CMD, .COM, .CPL, .DLL, .DMG, .EXE, .HTA, .INS, .ISP, .JAR, .JS, .JSE, .LIB, .LNK, .MDE, .MSC, .MSI, .MSP, .MST, .NSH .PIF, .SCR, .SCT, .SHB, .SYS, .VB, .VBE, .VBS, .VXD, .WSC, .WSF, .WSH
 Criteria for Assessment:
 Meets requirements:
 No extra features are added. 
@@ -44,14 +39,3 @@ Gotchas:
 Do Not Use Javascript in the browser (running on Node is fine). You won’t be able to successfully complete a GET request as we prevent cross-domain requests. 
 Remember that even though the response comes back as JSON format it is still just a string and needs to be parsed to be of any use to you.
 Use basic authentication.
-
-
-Sample Output
-Note: These are really basic samples only and not to be taken as prescriptive. We encourage you to format the ticket output in your own way.
-
-Sample CLI
-
-
-Sample Static Website
-
-
