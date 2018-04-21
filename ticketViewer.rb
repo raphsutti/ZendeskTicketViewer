@@ -14,7 +14,9 @@ Net::HTTP.start(uri.host, uri.port,
   request.basic_auth 'r.suttiyotin@gmail.com', 'test1234'
 
   response = http.request request
-
-  puts response.code
+  
+  # puts response.code
   # puts response.body
+  parsed_json = JSON.parse(response.body)
+  puts parsed_json['tickets'][1]['description']
 end
