@@ -5,7 +5,7 @@ require 'json'
 require 'openssl'
 require './pageCounter.rb'
 
-def ticketViewer()
+def ticketViewer(username, password)
   puts "loading data..."
   pageCount = pageCounter()
   # for count > 100, another page request required
@@ -21,7 +21,7 @@ def ticketViewer()
       :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
 
       request = Net::HTTP::Get.new uri.request_uri
-      request.basic_auth 'r.suttiyotin@gmail.com', 'test1234'
+      request.basic_auth username, password
 
       response = http.request request
       
@@ -30,15 +30,17 @@ def ticketViewer()
       count = parsed_json['count']
       
       ticketArray.each do |i|
-        puts "--#{i['created_at']}--"
-        puts "id:#{i['id']}: #{i['subject']}"
-        puts "#{i['description']}"
-        puts "-- end of ticket --"
-        puts ""  
+        puts "id:#{i['id']}: #{i['subject'].ljust(45)} author:#{i['requester_id']} created:#{i['created_at']}"
+        # puts "--#{i['created_at']}--"
+        # puts "id:#{i['id']}: #{i['subject']}"
+        # puts "initiator:#{i['requester_id']}"
+        # puts "#{i['description']}"
+        # puts "-- end of ticket --"
+        # puts ""  
       end
 
-      puts "Total ticket count: #{count}"
-      puts ""
+      # puts "Total ticket count: #{count}"
+      # puts ""
 
     end
 
