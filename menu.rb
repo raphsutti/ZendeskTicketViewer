@@ -34,7 +34,3 @@ def menu
   end
 end
 
-if authenticate($username,$password)
-  storeTicketArray($username, $password)
-  menu()
-end
