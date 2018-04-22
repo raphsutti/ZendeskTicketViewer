@@ -30,13 +30,15 @@ def ticketViewer()
       count = parsed_json['count']
       
       ticketArray.each do |i|
-        puts "----- id:#{i['id']} -----"
+        puts "--#{i['created_at']}--"
+        puts "id:#{i['id']}: #{i['subject']}"
         puts "#{i['description']}"
-        puts "----- end of ticket -----"
+        puts "-- end of ticket --"
         puts ""  
       end
 
       puts "Total ticket count: #{count}"
+      puts ""
 
     end
 
