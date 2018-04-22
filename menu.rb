@@ -18,6 +18,7 @@ def menu
     puts "'quit' - exit"
     puts "'view' - display all tickets"
     puts "'view {id}' - display ticket by id"
+    puts ""
     
     input = gets.chomp
   
@@ -33,7 +34,7 @@ def menu
     when "view"
       ticketViewer()
     else
-      "Invalid option - #{input}"
+      puts "Invalid option - '#{input}'"
     end
   end
 end
