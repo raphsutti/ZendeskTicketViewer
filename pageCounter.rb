@@ -4,14 +4,14 @@ require 'uri'
 require 'json'
 require 'openssl'
 
-def pageCounter
+def pageCounter(username, password)
   uri = URI.parse("https://firstorder.zendesk.com/api/v2/tickets.json")
   Net::HTTP.start(uri.host, uri.port,
     :use_ssl => uri.scheme == 'https', 
     :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
 
     request = Net::HTTP::Get.new uri.request_uri
-    request.basic_auth 'r.suttiyotin@gmail.com', 'test1234'
+    request.basic_auth username, password
 
     response = http.request request
     

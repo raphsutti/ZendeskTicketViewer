@@ -7,7 +7,7 @@ require './pageCounter.rb'
 
 def ticketViewer(username, password)
   puts "loading data..."
-  pageCount = pageCounter()
+  pageCount = pageCounter(username, password)
   # for count > 100, another page request required
   currentPage = 1
 
@@ -27,7 +27,7 @@ def ticketViewer(username, password)
       
       parsed_json = JSON.parse(response.body)
       ticketArray = parsed_json['tickets']
-      count = parsed_json['count']
+      # count = parsed_json['count']
       
       ticketArray.each do |i|
         puts "id:#{i['id']}: #{i['subject'].ljust(45)} author:#{i['requester_id']} created:#{i['created_at']}"
