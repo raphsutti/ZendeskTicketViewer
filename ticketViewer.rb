@@ -3,8 +3,13 @@ require 'net/http'
 require 'uri'
 require 'json'
 require 'openssl'
+require './pageCounter.rb'
 
-uri = URI.parse("https://firstorder.zendesk.com/api/v2/tickets.json")
+pageCount = pageCounter()
+puts "pageCount"
+# for count > 100, another page request required
+
+uri = URI.parse("https://firstorder.zendesk.com/api/v2/tickets.json?page=#{page}")
 
 Net::HTTP.start(uri.host, uri.port,
   :use_ssl => uri.scheme == 'https', 
@@ -15,8 +20,17 @@ Net::HTTP.start(uri.host, uri.port,
 
   response = http.request request
   
-  # puts response.code
-  # puts response.body
   parsed_json = JSON.parse(response.body)
-  puts parsed_json['tickets'][1]['description']
+  ticketArray = parsed_json['tickets']
+  count = parsed_json['count']
+  
+  ticketArray.each do |i|
+    puts "----- id:#{i['id']} -----"
+    puts "#{i['description']}"
+    puts "----- end of ticket -----"
+    puts ""  
+  end
+
+  puts "Total ticket count: #{count}"
+
 end
