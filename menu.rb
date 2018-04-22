@@ -1,20 +1,18 @@
 require 'io/console'
 require './authenticate.rb'
 require './ticketViewer.rb'
-# signedIn = false
 
 puts "--- First Order Ticket Viewer ---"
 puts "Username: "
-username = gets.chomp
+$username = gets.chomp
 puts "Password: "
-password = STDIN.noecho(&:gets).chomp
+$password = STDIN.noecho(&:gets).chomp
 
 def menu
   menu = true
   while menu == true
     puts ""
     puts "Options:"
-    puts "'help' - display options"
     puts "'quit' - exit"
     puts "'view' - display all tickets"
     puts "'view {id}' - display ticket by id"
@@ -27,23 +25,17 @@ def menu
     puts "input: " + input
     case input
     when "quit"
+      puts "Thank you for using First Order Ticket Viewer"
       menu = false
       break
-    when "help"
-      next
     when "view"
-      ticketViewer()
+      ticketViewer($username, $password)
     else
       puts "Invalid option - '#{input}'"
     end
   end
 end
 
-if authenticate(username,password)
+if authenticate($username,$password)
   menu()
 end
-# puts signedIn
-
-
-
-# puts data
