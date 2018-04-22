@@ -17,6 +17,7 @@ def authenticate(username, password)
     response = http.request request
 
     if response.code.to_i === 200
+      puts "Access granted"
       return true
     else
       puts "Failed to authenticate, error code: " + response.code

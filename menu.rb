@@ -1,6 +1,7 @@
 require 'io/console'
 require './authenticate.rb'
-require './ticketViewer.rb'
+require './storeTicketArray.rb'
+require './ticketsViewer.rb'
 
 puts "--- First Order Ticket Viewer ---"
 puts "Username: "
@@ -17,11 +18,8 @@ def menu
     puts "'view' - display all tickets"
     puts "'view {id}' - display ticket by id"
     puts ""
-    
     input = gets.chomp
   
-    # puts "username: " + username
-    # puts "password: " + password
     puts "input: " + input
     case input
     when "quit"
@@ -29,7 +27,7 @@ def menu
       menu = false
       break
     when "view"
-      ticketViewer($username, $password)
+      ticketsViewer()
     else
       puts "Invalid option - '#{input}'"
     end
@@ -37,5 +35,6 @@ def menu
 end
 
 if authenticate($username,$password)
+  storeTicketArray($username, $password)
   menu()
 end

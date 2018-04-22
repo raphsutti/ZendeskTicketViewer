@@ -1,15 +1,17 @@
-# require './menu.rb'
 require 'net/http'
 require 'uri'
 require 'json'
 require 'openssl'
 require './pageCounter.rb'
 
-def ticketViewer(username, password)
+def storeTicketArray(username, password)
   puts "loading data..."
   pageCount = pageCounter(username, password)
   # for count > 100, another page request required
   currentPage = 1
+ 
+  # initiate for data storage
+  $ticketArray = []
 
   # loop through all the pages
   while currentPage <= pageCount do
@@ -26,22 +28,8 @@ def ticketViewer(username, password)
       response = http.request request
       
       parsed_json = JSON.parse(response.body)
-      ticketArray = parsed_json['tickets']
-      # count = parsed_json['count']
+      $ticketArray += parsed_json['tickets']
       
-      ticketArray.each do |i|
-        puts "id:#{i['id']}: #{i['subject'].ljust(45)} author:#{i['requester_id']} created:#{i['created_at']}"
-        # puts "--#{i['created_at']}--"
-        # puts "id:#{i['id']}: #{i['subject']}"
-        # puts "initiator:#{i['requester_id']}"
-        # puts "#{i['description']}"
-        # puts "-- end of ticket --"
-        # puts ""  
-      end
-
-      # puts "Total ticket count: #{count}"
-      # puts ""
-
     end
 
     currentPage +=1
