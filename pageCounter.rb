@@ -19,10 +19,10 @@ def pageCounter
     count = parsed_json['count']
     # 1 page for 1-100 count
     pageCount = (count.to_i - 1) / 100 + 1
-    puts "Total pages: #{pageCount}"
-    puts "Total ticket count: #{count}"
+    # puts "Total pages: #{pageCount}"
+    # puts "Total ticket count: #{count}"
     return pageCount
   end
 end
 
-pageCounter()
+# pageCounter()
