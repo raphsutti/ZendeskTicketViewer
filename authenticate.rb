@@ -15,15 +15,13 @@ def authenticate(username, password)
     request.basic_auth username, password
 
     response = http.request request
-    
-    if response.code.to_i != 200
+
+    if response.code.to_i === 200
+      return true
+    else
       puts "Failed to authenticate, error code: " + response.code
       return false
     end
-    # puts response.body
-    # parsed_json = JSON.parse(response.body)
-    # puts parsed_json['tickets'][0]['description']
-    # 
 
   end
 end
