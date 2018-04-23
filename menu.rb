@@ -21,6 +21,7 @@ def menu
       menu = false
       break
     when "view"
+      # pass in default page 1 to ticketsViewer()
       ticketsViewer(1)
     else
       puts "Invalid option - '#{input}'"

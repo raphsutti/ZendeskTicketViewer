@@ -12,20 +12,23 @@ require 'openssl'
 def ticketsViewer(currentPage)
   pageView = true
   while pageView
-    pageViewer(currentPage)
-    puts "current page: #{currentPage}"
-    puts "input page number: "
-    currentPage = gets.chomp.to_i
-    if currentPage == 0
+    if currentPage ==0
       pageView = false
     end
+    pageViewer(currentPage)
+    count = $ticketArray.length
+    $maxPage = (count - 1) / $maxPerPage +1
+    puts "page: #{currentPage} of #{$maxPage}"
+    puts "to change page; input page number.. "
+    currentPage = gets.chomp.to_i
   end
 end
 
 def pageViewer(currentPage)
-  maxPerPage = 25
-  first = (currentPage - 1) * maxPerPage
-  last = currentPage * maxPerPage
-  $ticketArray[first,last].each { |i|  puts "id:#{i['id']}: #{i['subject'].ljust(45)} author:#{i['requester_id']} created:#{i['created_at']}" }
+  $maxPerPage = 25
+  first = (currentPage - 1) * $maxPerPage
+  # does not include last one
+  last = currentPage * $maxPerPage -1
+  $ticketArray[first..last].each { |i|  puts "id:#{i['id']}: #{i['subject'].ljust(45)} author:#{i['requester_id']} created:#{i['created_at']}" }
   currentPage +=1
 end
