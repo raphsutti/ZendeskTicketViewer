@@ -11,13 +11,17 @@ require 'openssl'
 
 def ticketsViewer(currentPage)
   pageView = true
+  $maxPerPage = 25
+  count = $ticketArray.length
+  $maxPage = (count - 1) / $maxPerPage +1
   while pageView
-    if currentPage ==0
+    # puts (1..$maxPage)
+    if !currentPage.between?(1,$maxPage)
       pageView = false
+      puts "Invalid page number #{currentPage}"
+      break
     end
     pageViewer(currentPage)
-    count = $ticketArray.length
-    $maxPage = (count - 1) / $maxPerPage +1
     puts "page: #{currentPage} of #{$maxPage}"
     puts "to change page; input page number.. "
     currentPage = gets.chomp.to_i
@@ -25,7 +29,7 @@ def ticketsViewer(currentPage)
 end
 
 def pageViewer(currentPage)
-  $maxPerPage = 25
+  
   first = (currentPage - 1) * $maxPerPage
   # does not include last one
   last = currentPage * $maxPerPage -1
