@@ -3,12 +3,6 @@ require './authenticate.rb'
 require './storeTicketArray.rb'
 require './ticketsViewer.rb'
 
-puts "--- First Order Ticket Viewer ---"
-puts "Username: "
-$username = gets.chomp
-puts "Password: "
-$password = STDIN.noecho(&:gets).chomp
-
 def menu
   menu = true
   while menu == true
