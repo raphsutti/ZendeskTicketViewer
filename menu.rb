@@ -21,7 +21,7 @@ def menu
       menu = false
       break
     when "view"
-      ticketsViewer()
+      ticketsViewer(1)
     else
       puts "Invalid option - '#{input}'"
     end
