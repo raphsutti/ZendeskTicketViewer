@@ -1,11 +1,10 @@
 def singleTicketViewer(id)
   count = $ticketArray.length
-  # need to change count to largest id
-  if id.to_i > count
-    puts "id #{id} out of range"
-    return false
-  end
-  # Need to throw error when id not found
   ticket = $ticketArray.detect {|ticket| ticket['id'] === id.to_i }
-  puts "id:#{ticket['id']}: #{ticket['subject']}\nauthor:#{ticket['requester_id']} created:#{ticket['created_at']}\ndescription:#{ticket['description']}"
+  # if detect method returns nil, display error
+  if !ticket
+    puts "Id: #{id} does not exist"
+  else
+    puts "Id:#{ticket['id']} Subject: #{ticket['subject']}\nAuthor id:#{ticket['requester_id']}\nCreated:#{ticket['created_at']}\nDescription:#{ticket['description']}"
+  end
 end
