@@ -2,10 +2,11 @@ require 'io/console'
 require './authenticate.rb'
 require './storeTicketArray.rb'
 require './ticketsViewer.rb'
+require './singleTicketViewer.rb'
 
 def menu
   menu = true
-  while menu == true
+  while menu
     puts ""
     puts "Options:"
     puts "'quit' - exit"
@@ -23,6 +24,8 @@ def menu
     when "view"
       # pass in default page 1 to ticketsViewer()
       ticketsViewer(1)
+    when input.to_i === 2
+      singleTicketViewer(input)
     else
       puts "Invalid option - '#{input}'"
     end
