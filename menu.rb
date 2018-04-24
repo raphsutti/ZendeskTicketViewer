@@ -4,6 +4,7 @@ require './storeTicketArray.rb'
 require './ticketsViewer.rb'
 require './singleTicketViewer.rb'
 
+
 def menu
   menu = true
   while menu
