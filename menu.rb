@@ -25,8 +25,8 @@ def menu
     when "view"
       # pass in default page 1 to ticketsViewer()
       ticketsViewer(1)
-    when input.to_i === 2
-      singleTicketViewer(input)
+    when /^(view\ [0-9]+)/
+      singleTicketViewer(input[5..-1])
     else
       puts "Invalid option - '#{input}'"
     end
