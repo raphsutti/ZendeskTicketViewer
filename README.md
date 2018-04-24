@@ -1,5 +1,21 @@
-Associate Software Engineer Coding Challenge
 Zendesk Ticket Viewer
+1. Clone repository
+2. Install Ruby
+3. Run ruby menu.rb from a CLI
+
+This app separates function into various files
+authenticate.rb - checks if username and password is correct
+menu.rb - displays main menu with option
+storeTicketArray.rb - store json data into local hash for faster loads
+pageCounter.rb - count how many json pages req (as API only allows max 100 per page)
+
+ticketsViewer.rb - displays all tickets in pages with maximum of 25 tickets per page
+singleTicketViewer.rb - display ticket by id in detail
+
+Any feedback is appreciated!
+-----
+
+Associate Software Engineer Coding Challenge
 Zendesk is a customer service tool that allows the creation and management of support tickets. Your company needs you to build a Ticket Viewer that will:
 
 Connect to the Zendesk API

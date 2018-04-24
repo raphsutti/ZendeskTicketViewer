@@ -7,6 +7,7 @@ require './pageCounter.rb'
 def storeTicketArray(username, password)
   puts "loading data..."
   pageCount = pageCounter(username, password)
+  
   # for count > 100, another page request required
   currentPage = 1
  
@@ -29,9 +30,7 @@ def storeTicketArray(username, password)
       
       parsed_json = JSON.parse(response.body)
       $ticketArray += parsed_json['tickets']
-      
     end
-
     currentPage +=1
   end
 end
