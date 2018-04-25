@@ -13,13 +13,12 @@ def menu
     puts "'quit' - exit"
     puts "'view' - display all tickets"
     puts "'view {id}' - display ticket by id"
-    puts ""
     input = gets.chomp
   
     puts "input: " + input
     case input
     when "quit"
-      puts "Thank you for using First Order Ticket Viewer"
+      puts "Thank you for using First Order Ticket Viewer. Good bye"
       menu = false
       break
     when "view"
