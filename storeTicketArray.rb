@@ -10,10 +10,8 @@ def storeTicketArray(username, password)
   
   # for count > 100, another page request required
   currentPage = 1
- 
   # initiate for data storage
   $ticketArray = []
-
   # loop through all the pages
   while currentPage <= pageCount do
 

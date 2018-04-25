@@ -4,14 +4,17 @@ def ticketsViewer(currentPage)
   count = $ticketArray.length
   $maxPage = (count - 1) / $maxPerPage +1
   
+  # While in page view mode
   while pageView
     if currentPage === "quit"
       pageView = false
       puts "Exiting view page mode.."
       break
+    # check if input value is in page range
     elsif !currentPage.to_i.between?(1,$maxPage)
       pageView = false
       puts "Invalid input: #{currentPage}"
+      # default to first page
       puts "Displaying first page.."
       ticketsViewer(1)
     else
@@ -25,6 +28,7 @@ def ticketsViewer(currentPage)
   end
 end
 
+# Compile list for the page requested
 def pageViewer(currentPage)
   first = (currentPage - 1) * $maxPerPage
   # does not include last item

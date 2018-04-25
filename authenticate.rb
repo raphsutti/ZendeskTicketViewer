@@ -4,9 +4,7 @@ require 'json'
 require 'openssl'
 
 def authenticate(username, password)
-
   uri = URI.parse("https://firstorder.zendesk.com/api/v2/tickets.json")
-
   Net::HTTP.start(uri.host, uri.port,
     :use_ssl => uri.scheme == 'https', 
     :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
@@ -15,7 +13,7 @@ def authenticate(username, password)
     request.basic_auth username, password
 
     response = http.request request
-
+    
     if response.code.to_i === 200
       puts "Access granted"
       return true
