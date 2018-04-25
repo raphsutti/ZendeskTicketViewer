@@ -5,17 +5,23 @@ def ticketsViewer(currentPage)
   $maxPage = (count - 1) / $maxPerPage +1
   
   while pageView
-    if currentPage == "quit" || !currentPage.between?(1,$maxPage)
+    if currentPage === "quit"
       pageView = false
       puts "Exiting view page mode.."
       break
+    elsif !currentPage.to_i.between?(1,$maxPage)
+      pageView = false
+      puts "Invalid input: #{currentPage}"
+      puts "Displaying first page.."
+      ticketsViewer(1)
+    else
+      puts ""
+      pageViewer(currentPage.to_i)
+      puts "page (#{currentPage} of #{$maxPage})", ""
+      puts "To quit view pages, input 'quit'"
+      puts "To change page, input page number.. "
+      currentPage = gets.chomp
     end
-
-    pageViewer(currentPage)
-    puts "page: #{currentPage} of #{$maxPage}"
-    puts "To quit view pages, input 'quit'"
-    puts "To change page, input page number.. "
-    currentPage = gets.chomp.to_i
   end
 end
 
