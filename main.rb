@@ -7,7 +7,7 @@ puts "Username: "
 $username = gets.chomp
 puts "Password: "
 $password = STDIN.noecho(&:gets).chomp
-
+puts "Authenticating.."
 if authenticate($username,$password)
   storeTicketArray($username, $password)
   menu()
