@@ -4,7 +4,6 @@ require './storeTicketArray.rb'
 require './ticketsViewer.rb'
 require './singleTicketViewer.rb'
 
-
 def menu
   menu = true
   while menu
@@ -18,13 +17,14 @@ def menu
     puts "input: " + input
     case input
     when "quit"
-      puts "Thank you for using First Order Ticket Viewer. Good bye"
+      puts "Thank you for using First Order Ticket Viewer. Have a nice day"
       menu = false
       break
     when "view"
       # pass in default page 1 to ticketsViewer()
       ticketsViewer(1)
     when /^(view\ [0-9]+)/
+      # regex to match the id input by user
       singleTicketViewer(input[5..-1])
     else
       puts "Invalid option - '#{input}'"
